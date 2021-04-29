@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import care.ai.play2paycodingchallenge.R
 import care.ai.play2paycodingchallenge.adapters.EbayItemAdapter
@@ -25,7 +26,7 @@ class EbayItemFragment:Fragment() {
     ): View {
         val binding = FragmentEbayItemsBinding.inflate(LayoutInflater.from(requireContext()))
         binding.ebayItemRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-
+        binding.ebayItemRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
         viewModel.items.observe(viewLifecycleOwner, Observer {
             val adapter = EbayItemAdapter(it)
             binding.ebayItemRecyclerView.adapter = adapter
